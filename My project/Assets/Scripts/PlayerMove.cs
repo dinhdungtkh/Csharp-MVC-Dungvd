@@ -17,22 +17,30 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //Debug.Log("UpArrow");
-            rb.MovePosition(rb.position + new Vector3(0, 0, 1) * 5 * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + new Vector3(0, 0, 1) * 5 * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(0, 0, 1) ,ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             //Debug.Log("DownArrow");
-            rb.MovePosition(rb.position + new Vector3(0, 0, -1) * 5 * Time.fixedDeltaTime);
+            //rb.MovePosition(rb.position + new Vector3(0, 0, -1) * 5 * Time.fixedDeltaTime);
+            rb.AddForce(new Vector3(0, 0, -1) ,ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //Debug.Log("LeftArrow");
-            rb.MovePosition(rb.position + new Vector3(-1, 0, 0) * 5 * Time.fixedDeltaTime);
+           // rb.MovePosition(rb.position + new Vector3(-1, 0, 0) * 5 * Time.fixedDeltaTime);
+           rb.AddForce(new Vector3(-1, 0, 0) ,ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             //Debug.Log("RightArrow");
-            rb.MovePosition(rb.position + new Vector3(1, 0, 0) * 5 * Time.fixedDeltaTime);
+           // rb.MovePosition(rb.position + new Vector3(1, 0, 0) * 5 * Time.fixedDeltaTime);
+           rb.AddForce(new Vector3(1, 0, 0) ,ForceMode.VelocityChange);
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(new Vector3(0, 1, 0) ,ForceMode.VelocityChange);
         }
     }
     // Update is called once per frame
