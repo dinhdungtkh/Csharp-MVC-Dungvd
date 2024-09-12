@@ -7,11 +7,21 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      Animator animator =  GameObject.Find("Cube").GetComponent<Animator>();
-      animator.speed = 2;
-
+      Invoke("cubeAnimation", 2.0f);
     }
 
+
+    void cubeAnimation()
+    {
+      GameObject.Find("Cube").GetComponent<Animator>().SetBool("isRunning",true);
+        
+    } 
+
+    void sphereAnimation()
+    {
+        Animator animator =  GameObject.Find("Sphere").GetComponent<Animator>();
+        animator.SetBool("isRunning", true);
+    }
     // Update is called once per frame
     void Update()
     {
