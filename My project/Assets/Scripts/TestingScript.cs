@@ -10,7 +10,13 @@ public class TestingScript : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Name: " + PlayerPrefs.GetString("Name"));
+        Debug.Log("ID: " + PlayerPrefs.GetString("ID"));
+        Debug.Log("Level: " + PlayerPrefs.GetInt("Level"));
+
         Invoke("MoveToSceneTwo", 3.0f);
+      
+     
     }
 
     void MoveToSceneTwo()
