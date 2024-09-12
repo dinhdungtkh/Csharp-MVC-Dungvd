@@ -14,14 +14,14 @@ public class TestingScript : MonoBehaviour
         Debug.Log("ID: " + PlayerPrefs.GetString("ID"));
         Debug.Log("Level: " + PlayerPrefs.GetInt("Level"));
 
-        Invoke("MoveToSceneTwo", 3.0f);
+       // Invoke("MoveToSceneTwo", 3.0f);
       
      
     }
 
     void MoveToSceneTwo()
     {
-        SceneManager.LoadScene(nextSceneName);
+       // SceneManager.LoadScene(nextSceneName);
     }
     private void OnEnable()
     {
@@ -39,6 +39,19 @@ public class TestingScript : MonoBehaviour
     private void Update()
     {
         //Debug.Log("Update is calling" + Time.deltaTime);
+        if (Input.GetMouseButtonDown(0)) {
+        Ray ray  = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            Debug.Log("Hit: " + hit.transform.name);
+            if (hit.transform.name == "Cube")
+            {
+                Debug.Log("Hit: " + hit.transform.name);
+                SceneManager.LoadScene("Scene 3");
+            }
+        }
+        }
     }
     private void FixedUpdate()
     {
