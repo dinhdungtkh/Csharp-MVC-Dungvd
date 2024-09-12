@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 1129057377}
   - component: {fileID: 1129057379}
   - component: {fileID: 1129057380}
+  - component: {fileID: 1129057381}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -601,11 +602,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129057376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c5da51053efbf848835f88539cd054f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1129057381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129057376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee507bdbabd3b5c48adef5dad598d1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxNum1: {fileID: 2100000, guid: 591ef31ae448f1b4ea8063ba015b276e, type: 2}
+  skyboxNum2: {fileID: 2100000, guid: 19a13e539dabad748a0138eb906650ea, type: 2}
+  skyboxNum3: {fileID: 2100000, guid: e00ea02e86252ca41ac5c93b8015917d, type: 2}
+  skyboxNum4: {fileID: 2100000, guid: c668a01293ef7f34cb0438d7034bec5d, type: 2}
+  changeDuration: 15
 --- !u!1 &1822332176
 GameObject:
   m_ObjectHideFlags: 3
