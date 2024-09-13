@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 1129057378}
   - component: {fileID: 1129057380}
   - component: {fileID: 1129057381}
+  - component: {fileID: 1129057382}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -588,9 +589,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129057376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aae7fd758a3176343b6d2d15cd26625b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1129057382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129057376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59999d65328ffe348a75da38b36e39c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1495494898
@@ -866,6 +879,10 @@ PrefabInstance:
     - target: {fileID: 19807098, guid: 3e142e58a407a7048856096aab4c9f5e, type: 3}
       propertyPath: ShapeModule.type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19807098, guid: 3e142e58a407a7048856096aab4c9f5e, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19807098, guid: 3e142e58a407a7048856096aab4c9f5e, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
