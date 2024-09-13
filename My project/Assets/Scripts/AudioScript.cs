@@ -13,7 +13,7 @@ public class AudioScript : MonoBehaviour
         audioSource.PlayDelayed(4f);
         
         idleClip = Resources.Load<AudioClip>("SoundFX/idlesfx");
-        )
+        
         if (idleClip != null)
         {
             Debug.Log("found idlesfx");
