@@ -996,7 +996,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 3668161}
           m_TargetAssemblyTypeName: Fire, Assembly-CSharp
-          m_MethodName: pointerDown
+          m_MethodName: StartFiring
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1012,7 +1012,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 3668161}
           m_TargetAssemblyTypeName: Fire, Assembly-CSharp
-          m_MethodName: pointerUp
+          m_MethodName: StopFiring
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-   bool isFiring;
-   public AudioSource audioSource;
-   public void pointerDown()
-   {
-    isFiring = true;
-   }
-   public void pointerUp()
-   {
-    isFiring = false;
-   }
+    [SerializeField] private AudioSource audioSource;
+    private bool isFiring;
 
-   void Update()
-   {
-    if(isFiring)
+    public void StartFiring()
     {
-        Debug.Log("Fire");
-        audioSource.Play();
+        isFiring = true;
+        Invoke("FireWithDelay", 0.25f);
     }
-   }
-  
+
+    public void StopFiring() => isFiring = false;
+
+    private void FireWithDelay()
+    {
+        if (isFiring && !audioSource.isPlaying)
+        {
+            Debug.Log("Firing");
+            audioSource.Play();
+        }
+    }
+
+    private void Update()
+    {
+        // Không cần kiểm tra trong Update nữa vì chúng ta đã sử dụng Invoke
+    }
 }
