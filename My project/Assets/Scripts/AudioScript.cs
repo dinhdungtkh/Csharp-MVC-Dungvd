@@ -10,6 +10,8 @@ public class AudioScript : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayDelayed(4f);
+        
         idleClip = Resources.Load<AudioClip>("SoundFX/idlesfx");
         )
         if (idleClip != null)
