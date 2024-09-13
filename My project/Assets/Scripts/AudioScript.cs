@@ -11,17 +11,24 @@ public class AudioScript : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         idleClip = Resources.Load<AudioClip>("SoundFX/idlesfx");
-        
+        )
         if (idleClip != null)
         {
             Debug.Log("found idlesfx");
             audioSource.clip = idleClip;
             audioSource.Play();
+            Invoke("audioFinshed",idleClip.length);
         }
         else
         {
-            Debug.LogError("not foundidlesfx");
+           // Debug.LogError("not foundidlesfx");
         }
+    }
+
+
+
+    void audioFinshed(){
+        Debug.Log("Audio finished");
     }
 
 }
