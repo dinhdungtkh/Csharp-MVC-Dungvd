@@ -32,3 +32,17 @@ Non-power-of-two texture assets can be scaled at import time:
 3. In-game, they will behave like any other texture:
    - Can be compressed
    - Load very quickly
+   
+   # Optimizing Unity Audio Import Settings
+
+Incorrect audio import settings can harm game performance, especially on mobile. Key areas to optimize:
+
+- **Load Types**: Choose between `Decompress on Load`, `Compressed in Memory`, and `Streaming` based on memory and CPU impact.
+- **Compression Formats**: Use appropriate formats (e.g., Vorbis, MP3) for audio balance.
+- **Music vs. SFX**: Stream music, compress or decompress sound effects.
+- **Performance Focus**: Optimize for minimal RAM and CPU load.
+
+For a deeper dive, check the full article [here](https://blog.theknightsofunity.com/wrong-import-settings-killing-unity-game-part-2/).
+
+   
+   
