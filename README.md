@@ -44,5 +44,8 @@ Incorrect audio import settings can harm game performance, especially on mobile.
 
 For a deeper dive, check the full article [here](https://blog.theknightsofunity.com/wrong-import-settings-killing-unity-game-part-2/).
 
+
+How to Make 3D Text Look Sharp and Smooth in Unity 3D
+set size -> 0.1 font size -> 100
    
    
