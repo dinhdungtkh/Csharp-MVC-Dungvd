@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
@@ -20,5 +21,13 @@ public class UIScript : MonoBehaviour
    public void buttonPress(){
     buttonText.text = "Button Pressed";
     Debug.Log("Button Pressed");
-   }
+   } 
+
+    public void buttonPress2(Button button){
+        buttonText.text = "Button Pressed "+button.name;
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+        Debug.Log("====================");
+        Debug.Log(button.name);
+    }
+
 }
