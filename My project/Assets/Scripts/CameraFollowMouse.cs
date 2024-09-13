@@ -21,13 +21,13 @@ public class CameraFollowMouse : MonoBehaviour
 
     void Update()
     {
-        // yaw += speedHorizontal * Input.GetAxis("Mouse X");
-        // pitch -= speedVertical * Input.GetAxis("Mouse Y");
-        // pitch = Mathf.Clamp(pitch, -90f, 90f);
+        yaw += speedHorizontal * Input.GetAxis("Mouse X");
+        pitch -= speedVertical * Input.GetAxis("Mouse Y");
+        pitch = Mathf.Clamp(pitch, -90f, 90f);
 
-        // Vector3 targetRotation = new Vector3(pitch, yaw, 0f);
-        // currentRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref rotationSmoothVelocity, smoothTime);
-        // transform.eulerAngles = currentRotation;
+        Vector3 targetRotation = new Vector3(pitch, yaw, 0f);
+        currentRotation = Vector3.SmoothDamp(currentRotation, targetRotation, ref rotationSmoothVelocity, smoothTime);
+        transform.eulerAngles = currentRotation;
 
         if (Input.GetAxis("Mouse X") > 0)
         {
