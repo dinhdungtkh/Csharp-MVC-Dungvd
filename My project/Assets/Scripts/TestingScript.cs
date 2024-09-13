@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TestingScript : MonoBehaviour
 {
-    public string nextSceneName ="Scene 2";
+    public string nextSceneName;
 
     private void Start()
     {
@@ -48,7 +48,7 @@ public class TestingScript : MonoBehaviour
             if (hit.transform.name == "Cube")
             {
                 Debug.Log("Hit: " + hit.transform.name);
-                SceneManager.LoadScene("Scene 3");
+                SceneManager.LoadScene(nextSceneName);
             }
         }
         }
