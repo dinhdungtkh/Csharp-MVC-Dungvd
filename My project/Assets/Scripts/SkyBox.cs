@@ -8,6 +8,7 @@ public class SkyBox : MonoBehaviour
     public Material skyboxNum2;
     public Material skyboxNum3;
     public Material skyboxNum4;
+    [Range(0.0f,30f)] 
     public float changeDuration = 15f;
     private float timer = 0f;
     private int currentSkyboxIndex = 0;
