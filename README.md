@@ -165,3 +165,25 @@ Trang này cung cấp hướng dẫn về cách tối ưu hóa hiệu suất đ�
 ## 6. Culling và LOD
 - **Culling**: Làm cho các đối tượng nhỏ vô hình ở khoảng cách xa để giảm tải.
 - **Hệ thống Level Of Detail (LOD)**:
+
+
+# Tóm tắt: Occlusion Culling trong Unity
+
+Trang này mô tả quá trình occlusion culling trong Unity, giúp cải thiện hiệu suất bằng cách ngăn chặn việc render các GameObjects bị che khuất.
+
+## 1. Khái niệm Occlusion Culling
+Occlusion culling là quá trình mà Unity không thực hiện tính toán render cho các GameObjects bị che khuất hoàn toàn bởi các GameObjects khác. Điều này giúp tiết kiệm thời gian CPU và GPU bằng cách loại bỏ các thao tác render không cần thiết.
+
+## 2. Khi nào sử dụng Occlusion Culling
+- **Cải thiện hiệu suất**: Occlusion culling có lợi nhất khi dự án bị giới hạn bởi GPU do hiện tượng overdraw.
+- **Yêu cầu bộ nhớ**: Đảm bảo có đủ bộ nhớ để tải dữ liệu occlusion culling trong thời gian chạy.
+- **Cấu trúc cảnh**: Hoạt động tốt nhất trong các cảnh có khu vực nhỏ, rõ ràng, được phân tách bởi các GameObjects rắn.
+
+## 3. Cách thức hoạt động
+- **Baking dữ liệu**: Unity tạo dữ liệu occlusion culling trong trình chỉnh sửa và sử dụng dữ liệu này tại thời gian chạy để xác định những gì camera có thể thấy.
+- **Tạo dữ liệu**: Unity chia cảnh thành các ô và sinh dữ liệu mô tả hình học trong các ô, cũng như khả năng nhìn thấy giữa các ô liền kề.
+
+## 4. Tài nguyên bổ sung
+Unity sử dụng thư viện Umbra để thực hiện occlusion culling. Có thể tìm thêm thông tin trên trang tài nguyên bổ sung.
+
+Đây là những điểm chính về occlusion culling trong Unity, giúp tối ưu hóa hiệu suất render trong các dự án.
