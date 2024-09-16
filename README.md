@@ -31,6 +31,7 @@ Non-power-of-two texture assets can be scaled at import time:
 2. Unity will scale the texture assets as required
 3. In-game, they will behave like any other texture:
    - Can be compressed
+<<<<<<< Updated upstream
    - Load very quickly
    
    # Optimizing Unity Audio Import Settings
@@ -49,3 +50,57 @@ How to Make 3D Text Look Sharp and Smooth in Unity 3D
 set size -> 0.1 font size -> 100
    
    
+=======
+   - Load very quickly 
+
+
+  # Unity Event Function Execution Order
+
+This document outlines the execution order of various event functions in Unity scripting. Understanding this order is essential for effective game development and behavior management.
+
+## Execution Order
+
+1. **Editor Reset**
+   - Initializes script properties when first attached or when reset command is used.
+
+2. **Awake**
+   - Called before any `Start` functions; used for initialization.
+
+3. **On Enable**
+   - Invoked when the object is enabled (only if active).
+
+4. **On Level Was Loaded**
+   - Notifies that a new level has been loaded before the first frame update.
+
+5. **Start**
+   - Called before the first frame update if the script instance is enabled.
+
+6. **On Application Pause**
+   - Called at the end of the frame when a pause is detected.
+
+7. **Update Order**
+   - **Fixed Update**: Called at a fixed interval, often used for physics updates.
+   - **Update**: Called once per frame; the main function for frame updates.
+   - **Late Update**: Called once per frame after all `Update` functions.
+
+8. **On Pre-Cull**
+   - Called before the camera culls the scene.
+
+9. **On Became Visible / Invisible**
+   - Called when the object becomes visible/invisible to any camera.
+
+10. **On Pre-Render**
+    - Called before the camera starts rendering the scene.
+
+11. **On Render Object**
+    - Called after all regular scene rendering is done.
+
+12. **On Post Render**
+    - Called after the camera finishes rendering the scene.
+
+13. **On Render Image**
+    - Allows post-processing after scene rendering.
+
+14. **OnGUI**
+    - Called multiple 
+>>>>>>> Stashed changes
