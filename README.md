@@ -104,3 +104,34 @@ This document outlines the execution order of various event functions in Unity s
 14. **OnGUI**
     - Called multiple 
 >>>>>>> Stashed changes
+
+# Simple Checklist to Make Your Game Faster
+
+This checklist provides key tips to enhance the performance of your game. Adhering to these guidelines can help ensure smoother gameplay and better resource management.
+
+## Optimization Checklist
+
+1. **Vertex Count**
+   - Keep the vertex count below **200K** and **3M per frame** when building for PC (depending on the target GPU).
+
+2. **Shader Selection**
+   - Use built-in shaders from the **Mobile** or **Unlit** categories. These are simplified and work well on non-mobile platforms.
+
+3. **Material Management**
+   - Limit the number of different materials per scene and share as many materials between objects as possible.
+
+4. **Static Batching**
+   - Set the **Static** property on non-moving objects to allow internal optimizations like static batching.
+
+5. **Lighting**
+   - Use a single (preferably directional) pixel light affecting your geometry instead of multiple lights.
+   - Bake lighting rather than relying on dynamic lighting whenever possible.
+
+6. **Texture Formats**
+   - Use compressed texture formats and prefer **16-bit** textures over **32-bit** textures.
+
+7. **Fog Usage**
+   - Avoid using fog where possible to reduce rendering complexity.
+
+8. **Occlusion Culling**
+   - Implement Occlusion Culling to minimize
