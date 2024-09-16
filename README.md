@@ -187,3 +187,34 @@ Occlusion culling là quá trình mà Unity không thực hiện tính toán ren
 Unity sử dụng thư viện Umbra để thực hiện occlusion culling. Có thể tìm thêm thông tin trên trang tài nguyên bổ sung.
 
 Đây là những điểm chính về occlusion culling trong Unity, giúp tối ưu hóa hiệu suất render trong các dự án.
+
+===
+# Tạo Đám Mây Động Trong Unity
+
+Video này hướng dẫn cách tạo đám mây động trong Unity. Dưới đây là các bước thực hiện:
+
+## 1. Nhập Hệ Thống Hạt
+- Nhấn chuột phải, chọn "Import Package" và nhập "Particle Systems". Nhập tất cả các thành phần.
+
+## 2. Chọn Prefab
+- Truy cập vào thư mục `Standard Assets` > `Particle Systems` > `Prefabs` và chọn prefab **Dust Storm** (hoặc **Dust Storm Mobile** cho thiết bị di động). Kéo và thả prefab vào cảnh.
+
+## 3. Điều Chỉnh Vị Trí và Kích Thước
+- Đặt kích thước thành **100, 100, 100** và điều chỉnh vị trí Y lên **1000**.
+
+## 4. Cấu Hình Hạt
+- Thay đổi **Duration** thành **260** và bật **Pre-warm**.
+- Thiết lập **Start Lifetime** thành **5**, **Start Size** thành **-mm**, và **Speed** thành **50**.
+- Chuyển **Simulation Space** từ **Local** sang **World**.
+
+## 5. Cài Đặt Hình Dạng và Xoay
+- Trong phần **Shape**, đặt **Box Y** thành **10**.
+- Trong phần **Rotation Over Lifetime**, đặt từ **-7** đến **7**.
+
+## 6. Chế Độ Hiển Thị
+- Đặt **Render Mode** thành **Vertical**.
+
+## 7. Tùy Chỉnh Shader
+- Chọn shader **Vertex Lit** trong phần **Particles** và điều chỉnh màu sắc phát sáng cho đám mây.
+
+Cuối cùng, bạn sẽ có được đám mây động trông
