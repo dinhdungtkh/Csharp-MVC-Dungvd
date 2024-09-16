@@ -166,7 +166,7 @@ Trang này cung cấp hướng dẫn về cách tối ưu hóa hiệu suất đ�
 - **Culling**: Làm cho các đối tượng nhỏ vô hình ở khoảng cách xa để giảm tải.
 - **Hệ thống Level Of Detail (LOD)**:
 
-
+https://www.youtube.com/watch?v=6_vBxoNhab4&list=PLsAzinEPgS3QmNnEQ-uzNmQs6W9f14OXJ&index=89
 # Tóm tắt: Occlusion Culling trong Unity
 
 Trang này mô tả quá trình occlusion culling trong Unity, giúp cải thiện hiệu suất bằng cách ngăn chặn việc render các GameObjects bị che khuất.
