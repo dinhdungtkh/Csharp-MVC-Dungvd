@@ -15,7 +15,8 @@ public class MovePlayer : MonoBehaviour
     CharacterController controller = GetComponent<CharacterController>();
     if (controller.isGrounded)
     {
-      moveDirection = new Vector3(0, 0, TouchControl.playerMoveAxisTouch);
+      //moveDirection = new Vector3(0, 0, TouchControl.playerMoveAxisTouch);
+      moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
       moveDirection = transform.TransformDirection(moveDirection);  
       moveDirection *= speed;
       if (Input.GetButton("Jump"))
@@ -25,7 +26,8 @@ public class MovePlayer : MonoBehaviour
     controller.Move(moveDirection * Time.deltaTime);
     
    //Rotate Player 
-   transform.Rotate(0, TouchControl.playerTurnAxisTouch, 0);
+   //transform.Rotate(0, TouchControl.playerTurnAxisTouch, 0);
+   transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
   
   }
 
