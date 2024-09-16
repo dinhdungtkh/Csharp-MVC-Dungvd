@@ -135,3 +135,33 @@ This checklist provides key tips to enhance the performance of your game. Adheri
 
 8. **Occlusion Culling**
    - Implement Occlusion Culling to minimize
+
+
+   ==============
+
+
+   # Tối ưu hóa hiệu suất đồ họa trong Unity
+
+Trang này cung cấp hướng dẫn về cách tối ưu hóa hiệu suất đồ họa trong Unity, nhằm cải thiện tốc độ và chất lượng hình ảnh cho trò chơi.
+
+## 1. Định vị vấn đề hiệu suất
+- **GPU và CPU**: Xác định vấn đề hiệu suất là rất quan trọng. Thông thường, GPU bị giới hạn bởi độ phân giải và băng thông bộ nhớ, trong khi CPU bị giới hạn bởi số lượng batch cần render.
+
+## 2. Tối ưu hóa CPU
+- **Giảm số lượng đối tượng hiển thị**: Kết hợp các đối tượng gần nhau và sử dụng fewer materials.
+- **Sử dụng OnDemandRendering**: Giúp điều chỉnh tốc độ render để tiết kiệm năng lượng trong các tình huống như menu hoặc trò chơi theo lượt.
+
+## 3. Tối ưu hóa GPU
+- **Giảm số lượng tam giác**: Chỉ sử dụng số lượng tam giác cần thiết và giảm UV seams.
+- **Sử dụng Lightmapping**: Bakes ánh sáng tĩnh để giảm tải cho GPU.
+
+## 4. Tối ưu hóa ánh sáng
+- **Sử dụng Pixel Lights hợp lý**: Tránh sử dụng nhiều pixel lights cho các đối tượng trên thiết bị yếu.
+
+## 5. Nén và Mipmap Texture
+- **Sử dụng texture nén**: Giảm kích thước và tăng hiệu suất render.
+- **Bật Generate mipmaps** để tối ưu hóa việc sử dụng texture cho các tam giác nhỏ.
+
+## 6. Culling và LOD
+- **Culling**: Làm cho các đối tượng nhỏ vô hình ở khoảng cách xa để giảm tải.
+- **Hệ thống Level Of Detail (LOD)**:
