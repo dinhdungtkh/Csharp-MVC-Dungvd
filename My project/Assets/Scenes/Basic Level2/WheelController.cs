@@ -1,26 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class WheelController : MonoBehaviour
 {
-    public Button spinButton;
     public RectTransform wheel;
     public float spinDuration = 5f;
     public AnimationCurve spinCurve;
     public int segmentCount = 8;
+    public TextMeshProUGUI resultText; 
 
     private bool isSpinning = false;
+    [SerializeField]
+    private int selectedSegment;
 
-    void Start()
+   public void Start()
     {
-        spinButton.onClick.AddListener(StartSpin);
+        resultText.gameObject.SetActive(false);
     }
 
-    void StartSpin()
+   public void StartSpin()
     {
         if (!isSpinning)
         {
+            selectedSegment = Random.Range(0, segmentCount);
             StartCoroutine(SpinWheel());
         }
     }
@@ -28,25 +32,34 @@ public class WheelController : MonoBehaviour
     IEnumerator SpinWheel()
     {
         isSpinning = true;
+        resultText.gameObject.SetActive(false);
+        
+        float spinDuration = Random.Range(4f, 6f);
         float elapsedTime = 0f;
         float startRotation = wheel.rotation.eulerAngles.z;
-        float endRotation = startRotation - (360f * (Random.Range(2, 5) + Random.value));
-        float targetRotation = endRotation - (endRotation % (360f / segmentCount));
+        float targetRotation = -(selectedSegment * (360f / segmentCount));
+        float totalRotation = startRotation - (360f * (Random.Range(2, 5) + Random.value)) + targetRotation;
 
         while (elapsedTime < spinDuration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / spinDuration;
             float curveValue = spinCurve.Evaluate(t);
-            float currentRotation = Mathf.Lerp(startRotation, targetRotation, curveValue);
+            float currentRotation = Mathf.Lerp(startRotation, totalRotation, curveValue);
             wheel.rotation = Quaternion.Euler(0f, 0f, currentRotation);
             yield return null;
         }
 
-        wheel.rotation = Quaternion.Euler(0f, 0f, targetRotation);
+        wheel.rotation = Quaternion.Euler(0f, 0f, totalRotation);
         isSpinning = false;
 
-        int selectedSegment = Mathf.RoundToInt((-targetRotation % 360f) / (360f / segmentCount));
-        Debug.Log("Kết quả: Phần thưởng " + (selectedSegment + 1));
+        ShowResult();
+    }
+
+    void ShowResult()
+    {
+        resultText.text = "Kết quả: Phần thưởng " + (selectedSegment + 1);
+        resultText.gameObject.SetActive(true);
+        Debug.Log(resultText.text);
     }
 }
