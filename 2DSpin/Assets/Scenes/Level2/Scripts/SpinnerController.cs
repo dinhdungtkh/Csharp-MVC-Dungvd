@@ -47,6 +47,8 @@ public class SpinnerController : MonoBehaviour
         UIManager.Instance.textMeshProUGUI.text = " Current Random Index " + IndexGiftRandom.ToString();
         m_RewardFinalText.text = "Number " + IndexGiftRandom.ToString();
         float angleWant = (numberCircleRotate * CIRCLE) + angleOfOneGift * IndexGiftRandom - startAngle;
+
+
         while (currentTime < timeRotate)
         {
             yield return new WaitForEndOfFrame();

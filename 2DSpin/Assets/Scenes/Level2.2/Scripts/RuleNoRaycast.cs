@@ -1,16 +1,20 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class RuleNoRaycast : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> allCards = new List<GameObject>();
     private Stack<GameObject> flippedCards = new Stack<GameObject>();
     [SerializeField]
     private int maxFlippedCards = 2;
-    
-    void Update()
+    private GameController gameController;
+
+    private int wrongAttempts = 0;
+    private const int MAX_WRONG_ATTEMPTS = 3;
+
+
+    private void Start()
     {
-        // Không cần kiểm tra click trong Update nữa
+        gameController = FindObjectOfType<GameController>();
     }
 
     public void OnCardBackClick(GameObject cardBack)
@@ -18,6 +22,7 @@ public class RuleNoRaycast : MonoBehaviour
         if (cardBack.CompareTag("CardBack"))
         {
             FlipCard(cardBack);
+            gameController.OnCardInteraction();
         }
     }
 
@@ -39,6 +44,7 @@ public class RuleNoRaycast : MonoBehaviour
     public void OnButtonClick()
     {
         CheckCards();
+        gameController.OnCardInteraction();
     }
 
     void CheckCards()
@@ -50,25 +56,38 @@ public class RuleNoRaycast : MonoBehaviour
 
             if (card1.CompareTag(card2.tag))
             {
-                if (card1.CompareTag("baby") || card1.CompareTag("mom"))
+                if (card1.CompareTag("baby") || card1.CompareTag("mom") || card1.CompareTag("dad"))
                 {
                     DisableCard(card1);
                     DisableCard(card2);
-                    Debug.Log("Thẻ đúng!");
+                    AudioManager.PlaySound(Soundnames.TING);
                 }
             }
             else
             {
+                AudioManager.PlayRandomErrorSound();
                 FlipCardBack(card1);
                 FlipCardBack(card2);
+                wrongAttempts++;
+                if (wrongAttempts >= MAX_WRONG_ATTEMPTS)
+                {
+                    gameController.GameOver("Sai quá nhiều lần");
+                    return;
+                }
             }
+        }
+
+        if (gameController.GetAllCardsCount() == 0)
+        {
+            Debug.Log("Hết thẻ");
+            gameController.StartNewTurn();
         }
     }
 
     void DisableCard(GameObject card)
     {
         card.SetActive(false);
-        allCards.Remove(card);
+        gameController.RemoveCard(card);
     }
 
     void FlipCardBack(GameObject card)
