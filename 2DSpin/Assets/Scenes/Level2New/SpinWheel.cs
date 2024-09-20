@@ -1,7 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class SpinWheel : MonoBehaviour
 {
@@ -9,11 +9,19 @@ public class SpinWheel : MonoBehaviour
     public Button spinButton;
     public float minSpinTime = 4f;
     public float maxSpinTime = 6f;
+
     public float initialSpinSpeed = 1000f;
 
     private bool isSpinning = false;
     private int targetIndex;
     private float anglePerPrize;
+   
+    [SerializeField]
+    private float currentAngle; 
+
+
+    public AudioSource m_audioSource;
+    public AudioClip yaysfx;
 
     public enum Prize
     {
@@ -38,63 +46,46 @@ public class SpinWheel : MonoBehaviour
         anglePerPrize = 360f / prizes.Length;
     }
 
-    public void SpinWheelTest()
+  
+    [ContextMenu("Spin2")]
+    public void SpinWheelTestTwo()
     {
         if (!isSpinning)
         {
-            isSpinning = true;
             float spinTime = Random.Range(minSpinTime, maxSpinTime);
-            Debug.Log("" + spinTime);
-            targetIndex = Random.Range(0, prizes.Length);
-            Debug.Log(targetIndex);
-            StartCoroutine(Spin(spinTime));
+            StartCoroutine(SpinTestTwo(spinTime));
         }
+      
     }
 
-    private IEnumerator Spin(float spinTime)
+
+    private float EaseOutCubic(float t)
     {
+        t--;
+        return t * t * t + 1;
+    }
+
+
+    private IEnumerator SpinTestTwo(float spinTime)
+    {
+        
         float elapsedTime = 0f;
-        float currentAngle = m_Spin.eulerAngles.z;
-        float targetAngle = (360f * Random.Range(2, 5)) + (anglePerPrize * targetIndex);
-
-        Debug.Log("Góc khởi đầu: " + currentAngle);
-        Debug.Log("Góc mục tiêu: " + targetAngle);
-
+        currentAngle = m_Spin.eulerAngles.z;
         while (elapsedTime < spinTime)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / spinTime;
-            float currentSpeed = Mathf.Lerp(initialSpinSpeed, 0f, t);
+            float easedT = EaseOutCubic(t);
 
+            float currentSpeed = Mathf.Lerp(initialSpinSpeed, 0f, easedT);
             currentAngle += currentSpeed * Time.deltaTime;
             currentAngle %= 360;
             m_Spin.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-
-            if (elapsedTime % (spinTime / 10) < Time.deltaTime)
-            {
-                Debug.Log("Trục Z hiện tại: " + m_Spin.eulerAngles.z);
-            }
-
+            CalculateCurrentIndex(currentAngle);
             yield return null;
         }
-
-        targetAngle %= 360;
-        float finalAngle = m_Spin.eulerAngles.z;
-        Debug.Log("Trục Z hiện tại trước khi đặt lại: " + finalAngle);
-
-        if (Mathf.Abs(finalAngle - targetAngle) > 1f)
-        {
-            Debug.Log("Điều chỉnh góc cuối cùng từ " + finalAngle + " đến " + targetAngle);
-            m_Spin.rotation = Quaternion.Euler(0f, 0f, targetAngle);
-        }
-
-        isSpinning = false;
-        Debug.Log("Trục Z hiện tại sau khi đặt lại: " + m_Spin.eulerAngles.z);
-
-        int currentIndex = CalculateCurrentIndex(m_Spin.eulerAngles.z);
-        Debug.Log("Chỉ số hiện tại: " + currentIndex);
-
-        ShowResult();
+        m_audioSource.PlayOneShot(yaysfx, 1);
+        Debug.Log("Giải thưởng: " + prizes[CalculateCurrentIndex(currentAngle)]);
     }
 
     private int CalculateCurrentIndex(float currentAngle)
@@ -105,8 +96,4 @@ public class SpinWheel : MonoBehaviour
         return index;
     }
 
-    private void ShowResult()
-    {
-        Debug.Log("Giải thưởng: " + prizes[targetIndex]);
-    }
 }
