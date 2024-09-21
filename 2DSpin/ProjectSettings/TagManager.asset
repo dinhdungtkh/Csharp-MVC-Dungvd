@@ -8,6 +8,7 @@ TagManager:
   - mom
   - CardBack
   - arrow
+  - cardFront
   layers:
   - Default
   - TransparentFX

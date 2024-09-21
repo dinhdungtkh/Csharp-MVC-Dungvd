@@ -17,12 +17,12 @@ public class GameController : MonoBehaviour
     private bool isIdle = false;
     [SerializeField] private GameObject gameoverPanel;
     private bool isGameOver = false;
-    
+
     private void Start()
     {
         cursorAnimator = EssentialLoader.Instance.GetCursorAnimator();
         shuffleCardAnimator = EssentialLoader.Instance.GetShuffleCardAnimator();
-       
+
         if (cursorAnimator == null || shuffleCardAnimator == null)
         {
             Debug.LogError("Animator không được gán.");
@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     {
         if (cursorAnimator == null || shuffleCardAnimator == null)
         {
-           // Debug.LogError("Animator không được gán.");
+            // Debug.LogError("Animator không được gán.");
             return;
         }
 
@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
     }
 
     public void StartNewTurn()
-    {    
+    {
         currentTurn++;
         currentTurnTxt.text = "Turn: " + currentTurn.ToString();
         if (currentTurn > 4)
@@ -102,9 +102,13 @@ public class GameController : MonoBehaviour
         {
             shuffleCardAnimator.gameObject.SetActive(true);
             shuffleCardAnimator.SetBool("IsShuffled", true);
+            foreach (GameObject card in allCards)
+            {
+                card.SetActive(false);
+            }
 
-            yield return new WaitForSeconds(2f); 
-
+            yield return new WaitForSeconds(1f);
+            
             foreach (GameObject card in allCards)
             {
                 card.SetActive(true);
@@ -122,7 +126,7 @@ public class GameController : MonoBehaviour
             shuffleCardAnimator.SetBool("IsShuffled", false);
             shuffleCardAnimator.gameObject.SetActive(false);
         }
-    } 
+    }
 
     public int GetAllCardsCount()
     {

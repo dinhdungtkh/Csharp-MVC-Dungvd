@@ -6,7 +6,7 @@ public class EssentialLoader : MonoBehaviour
 
     [SerializeField] private Animator cursorAnimator;
     [SerializeField] private Animator shuffleCardAnimator;
-  
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,7 +36,7 @@ public class EssentialLoader : MonoBehaviour
             Debug.LogError("ShuffleCardAnimator is null in EssentialLoader.");
         }
         return shuffleCardAnimator;
-    } 
+    }
 
-   
+
 }

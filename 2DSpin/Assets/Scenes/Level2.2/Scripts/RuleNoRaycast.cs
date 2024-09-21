@@ -22,7 +22,7 @@ public class RuleNoRaycast : MonoBehaviour
         if (cardBack.CompareTag("CardBack"))
         {
             FlipCard(cardBack);
-            gameController.OnCardInteraction();
+          //  gameController.OnCardInteraction();
         }
     }
 
@@ -44,7 +44,7 @@ public class RuleNoRaycast : MonoBehaviour
     public void OnButtonClick()
     {
         CheckCards();
-        gameController.OnCardInteraction();
+       // gameController.OnCardInteraction();
     }
 
     void CheckCards()
