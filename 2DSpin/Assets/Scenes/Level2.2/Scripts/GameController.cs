@@ -20,8 +20,6 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        cursorAnimator = EssentialLoader.Instance.GetCursorAnimator();
-        shuffleCardAnimator = EssentialLoader.Instance.GetShuffleCardAnimator();
 
         if (cursorAnimator == null || shuffleCardAnimator == null)
         {

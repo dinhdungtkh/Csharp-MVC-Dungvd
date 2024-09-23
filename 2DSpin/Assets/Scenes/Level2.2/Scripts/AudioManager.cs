@@ -1,43 +1,47 @@
-using System.Runtime;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Soundnames{
-DAD, 
-MOM,
-OHNO,
-OOPS,
-TRYAGAIN,
-GAMEOVER,
-TING,
-ERROR,
+public enum Soundnames
+{
+    DAD,
+    MOM,
+    OHNO,
+    OOPS,
+    TRYAGAIN,
+    GAMEOVER,
+    TING,
+    ERROR,
+    BABY,
+    VICTORY
 }
+
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-   public static AudioManager instance { get; private set; }
+    public static AudioManager instance { get; private set; }
     private AudioSource mAudioSource;
-   [SerializeField]
-   private AudioClip[] soundList;
+    [SerializeField]
+    private AudioClip[] soundList;
 
-   private void Awake() {
-    instance = this;
-   }
-   
-   private void Start () {
-    mAudioSource = GetComponent<AudioSource>();
-   }
+    private void Awake()
+    {
+        instance = this;
+    }
 
-    public static void PlaySound(Soundnames m_Soundname,float volume = 1){
+    private void Start()
+    {
+        mAudioSource = GetComponent<AudioSource>();
+    }
+
+    public static void PlaySound(Soundnames m_Soundname, float volume = 1)
+    {
         instance.mAudioSource.PlayOneShot(instance.soundList[(int)m_Soundname], volume);
     }
     public static void PlayRandomErrorSound()
     {
         PlaySound(Soundnames.ERROR);
-        
+
         instance.StartCoroutine(instance.PlayDelayedRandomSound());
     }
 

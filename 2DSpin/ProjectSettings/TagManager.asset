@@ -9,11 +9,12 @@ TagManager:
   - CardBack
   - arrow
   - cardFront
+  - dad
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
   - Reward

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CardRuleNew : MonoBehaviour
@@ -7,11 +8,13 @@ public class CardRuleNew : MonoBehaviour
 
     private int wrongAttempts = 0;
 
+
+
     public bool AreCardsMatching(Card firstCard, Card secondCard)
     {
         return firstCard.Type == secondCard.Type &&
-               (firstCard.Type == Card.CardType.Baby || 
-                firstCard.Type == Card.CardType.Mom || 
+               (firstCard.Type == Card.CardType.Baby ||
+                firstCard.Type == Card.CardType.Mom ||
                 firstCard.Type == Card.CardType.Dad);
     }
 
@@ -20,13 +23,38 @@ public class CardRuleNew : MonoBehaviour
         return AreCardsMatching(firstCard, secondCard);
     }
 
-    public void HandleMatchedCards()
+    public void PlayCardSound(Card card)
     {
-        AudioManager.PlaySound(Soundnames.TING);
+        switch (card.Type)
+        {
+            case Card.CardType.Baby:
+                AudioManager.PlaySound(Soundnames.BABY);
+                break;
+            case Card.CardType.Mom:
+                AudioManager.PlaySound(Soundnames.MOM);
+                break;
+            case Card.CardType.Dad:
+                AudioManager.PlaySound(Soundnames.DAD);
+                break;
+        }
     }
 
-    public bool HandleMismatchedCards()
+    public void HandleMatchedCards(Card firstCard, Card secondCard)
     {
+        AudioManager.PlaySound(Soundnames.TING);
+        StartCoroutine(PlayFirstCardSound(firstCard));
+    }
+
+    private IEnumerator PlayFirstCardSound(Card card)
+    {
+        yield return new WaitForSeconds(1f);
+        PlayCardSound(card);
+    }
+
+    public bool HandleMismatchedCards(Card firstCard, Card secondCard)
+    {
+        firstCard.CastViberation();
+        secondCard.CastViberation();
         AudioManager.PlayRandomErrorSound();
         wrongAttempts++;
         return wrongAttempts >= MAX_WRONG_ATTEMPTS;
